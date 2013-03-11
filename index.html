@@ -45,11 +45,177 @@
 						your JavaScript
 				</section>
 
+				<section>
+					<img src="img/ie.png" alt="Internet Explorer with a lot of browser plugins installed" />
+				</section>
+
+				<section>
+					<p>
+						JS is running in your app that <strong>you didn't put there.</strong>
+					</p>
+				</section>
+
+				<section>
+					<p>From the <a href="https://developer.chrome.com/extensions/content_scripts.html">Chrome Extension Docs</a>...</p>
+					<blockquote>
+						Content scripts are JavaScript files that run in the context of web pages. 
+						<br /><br />
+						By using the standard DOM, they can read details of the web pages the browser visits, or <em style="font-size: 140%;">make changes to them</em>.
+					</blockquote>
+				</section>
+
+				<section>
+					Show me proof!
+				</section>
+
+				<section>
+          DIY JS error logging
+<pre><code>
+window.onerror = function( message, file, line ) { 
+  var formattedMessage = '[' + file + ':' + line + '] ' + message;
+
+  _gaq.push( [  '_trackEvent', 
+                'Exceptions', 
+                'Application', 
+                formattedMessage, 
+                null, 
+                true ] );
+}
+</code></pre>
+				</section>
+
+        <section>
+          <ul>
+            <li class="fragment" data-fragment-index="1"><code>[chrome://freecorder/content/js/content.js:9]<br /> TypeError: freecorder.extension is undefined</code></li>
+            <li class="fragment" data-fragment-index="2"><code>[chrome://afterthedeadline/content/atd.js:687]<br /> TypeError: can't access dead object</code></li>
+            <li class="fragment" data-fragment-index="3"><code>[chrome://ffvkbd/content/ikavvklistener.js:0]<br /> Script error.</code></li>
+            <li class="fragment" data-fragment-index="4"><code>[D:\Program Files (x86)\Kingsoft\PowerWordDict\<br />plugin\firefox\resources\grabword.js:71]<br /> TypeError: event.target is undefined</code></li>
+            <li class="fragment" data-fragment-index="5"><code>[http://bens-awesome-app.com:1]<br /> ReferenceError: Can't find variable: Reader2</code></li>
+            <li class="fragment" data-fragment-index="6"><code>[http://bens-awesome-app.com:1]<br /> SyntaxError: Unexpected string '^^^'</code></li>
+          </ul>
+        </section>
+
+        <section>
+          <p>
+            JS is running in your app that <strong>you didn't put there.</strong>
+          </p>
+        </section>
+
+        <section>
+          <p>Mostly harmless, except when they...</p>
+
+          <ul>
+            <li class="fragment" data-fragment-index="1">block resources</li>
+            <li class="fragment" data-fragment-index="2">mess with your DOM</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Blocking resources</h2>
+        </section>
+
+        <section>
+          <h2>AdBlock</h2>
+          <p>Get logo</p>
+        </section>
+
+        <section>
+          <p>AdBlock blocks ads <span class="fragment" data-fragment-index="1">(...duh)</span></p>
+        </section>
+
+        <section>
+          <p>One day at Envato...</p>
+          <ul>
+            <li class="fragment" data-fragment-index="1"><strong>Video player is broken!</strong></li>
+            <li class="fragment" data-fragment-index="2"><strong>Ajax stuff is broken!</strong></li>
+            <li class="fragment" data-fragment-index="3"><strong>Everything is broken!</strong></li>
+            <li class="fragment" data-fragment-index="4"><strong>IN CHROME!</strong></li>
+          </ul>
+        </section>
+
+        <section>
+          <p>We couldn't reproduce any problems.<br /> <strong>Everything looked fine.</strong></p>
+        </section>
+
+        <section>
+          <code>googleadservices.com/pagead/conversion.js</code>
+        </section>
+
+
+        <section>
+<pre><code>
+yepnope({
+  load: [ 'vendor.js', 
+          'lib.js',
+          'app.js' ],
+
+  complete: function () {
+    app.init();
+  }
+});
+</code></pre>
+        </section>
+
+        <section>
+<pre><code>
+yepnope({
+  load: [ 'vendor.js', 
+          'lib.js',
+          'app.js', 
+          'googleadservices.com/conversion.js' ],
+
+  complete: function () {
+    app.init();
+  }
+});
+</code></pre>
+        </section>
+
+        <section>
+          <p>AdBlock blocks AdWords script.</p>
+          <p class="fragment" data-fragment-index="1">Yepnope's default timeout is <strong>10 seconds</strong></p>
+          <p class="fragment" data-fragment-index="2"><strong>NOTHING WORKS!</strong> <span class="fragment" data-fragment-index="3">(for 10 seconds...)</span></p>
+        </section>
+
+        <section>
+          Tin foil hat
+        </section>
+
+        <section>
+          <h3>Block all resources from other domains</h3>
+          <p>:( if you use a CDN</p>
+        </section>
+
+        <section>
+          <h3>Clear cookies constantly</h3>
+          <p><code>$.cookie('announcement_hidden', 'true');</code></p>
+          <p>Don't store user preferences in cookies.</p>
+        </section>
+
+        <section>
+          <h2>Some extensions mess with your DOM</h2>
+        </section>
+
+        <section>
+          Google screenshot extension adds classes to your HTML
+<pre><code>
+  &lt;html class="screenshot-ready"&gt;
+
+</code></pre>
+        </section>
+
+        <section>
+
+        </section>
 
 
 
 
 
+        <section>
+          <p>Try it on your app</p>
+          <p><strong>What is your users' browser really like?</strong></strong>
+        </section>
 
 
 
