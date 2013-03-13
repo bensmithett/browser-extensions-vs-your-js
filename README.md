@@ -1,1 +1,1 @@
-See the slides: [bensmithett.github.com/browser-extensions-vs-your-js](https://bensmithett.github.com/browser-extensions-vs-your-js)
+See the slides: [bensmithett.github.com/browser-extensions-vs-your-js](http://bensmithett.github.com/browser-extensions-vs-your-js)
