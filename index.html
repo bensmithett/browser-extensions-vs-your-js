@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Browser extensions vs your JS</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="A presentation I gave at Melb JS">
+		<meta name="author" content="Ben Smithett">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -15,10 +15,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
 
 		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<!--<link rel="stylesheet" href="lib/css/zenburn.css">-->
+    <link rel="stylesheet" href="lib/css/github.css">
 
 		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 		<script>
@@ -85,6 +86,7 @@ window.onerror = function( message, file, line ) {
                 null, 
                 true ] );
 }
+
 </code></pre>
 				</section>
 
@@ -133,6 +135,7 @@ yepnope({
     app.init();
   }
 });
+
 </code></pre>
         </section>
 
@@ -176,6 +179,7 @@ yepnope({
 <pre><code>
   var clippy = document.getElementById('clippy');
   clippy.classList.add('being-helpful');
+
 </code></pre>
 
           <p><button class="clippy-1">Run</button></p>
@@ -198,35 +202,33 @@ yepnope({
             }
           </style>  
 
-          <p><img src="img/clippy.png" id="clippy-good" /></p>
+          <p><img src="img/clippy.png" id="clippy-good" style="border:none; box-shadow: none;" /></p>
 
         </section>
 
         <section>
         Greasemonkey script:
-<pre><code>
-  var wtfIHateClippySoMuch = document.getElementById('clippy');
+<pre><code>  var wtfIHateClippySoMuch = document.getElementById('clippy');
   wtfIHateClippySoMuch.parentNode.removeChild( wtfIHateClippySoMuch );
 </code></pre>
 
         <p><button class="greasemonkey">Run</button></p>
 
           Our app:
-<pre><code>
-  var clippy = document.getElementById('clippy');
+<pre><code>  var clippy = document.getElementById('clippy');
   clippy.classList.add('being-helpful');
 </code></pre>
 
           <p><button class="clippy-2">Run</button></p>
 
-          <p><img src="img/clippy.png" id="clippy" /></p>          
+          <p><img src="img/clippy.png" id="clippy" style="border:none; box-shadow: none;" /></p>          
         </section>
 
         <section>
           <h2>Downsides</h2>
           <ul>
             <li class="fragment" data-fragment-index="1">DOM your JS expects might not exist in the wild</li>
-            <li class="fragment" data-fragment-index="2">Break existing userscripts whenever you update the DOM</li>
+            <li class="fragment" data-fragment-index="2">Break existing userscripts whenever you update the HTML</li>
           </ul>
         </section>
 
@@ -294,7 +296,7 @@ yepnope({
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
-				controls: true,
+				controls: false,
 				progress: true,
 				history: true,
 				center: true,
